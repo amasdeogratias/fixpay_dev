@@ -18,8 +18,8 @@
 
 </head>
 <body>
-@include('site.partials.nav')
 @include('site.partials.header')
+@yield('content')
 
  {{-- include scripts  --}}
 <script src="{{ asset('frontend/js/jquery-2.0.0.min.js') }}" type="text/javascript"></script>
