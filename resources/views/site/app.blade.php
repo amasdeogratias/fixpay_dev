@@ -18,6 +18,7 @@
 
 </head>
 <body>
+@include('site.partials.nav')
 @include('site.partials.header')
 
  {{-- include scripts  --}}
