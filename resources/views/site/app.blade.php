@@ -18,7 +18,7 @@
 
 </head>
 <body>
-@include('')
+@include('site.partials.header')
 
  {{-- include scripts  --}}
 <script src="{{ asset('frontend/js/jquery-2.0.0.min.js') }}" type="text/javascript"></script>
