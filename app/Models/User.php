@@ -51,7 +51,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->first_name. ' '. $this->last_name;
     }
 
-    /**
+/**
 * Send the queued email verification notification.
 *
 * @param  string  $token
