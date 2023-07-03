@@ -21,4 +21,6 @@ Route::view('/', 'site.pages.homepage');
 
 Route::view('/admin', 'admin.dashboard.index');
 
+Auth::routes();
+
 
