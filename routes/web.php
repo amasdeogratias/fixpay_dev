@@ -21,7 +21,6 @@ require 'admin.php';
 // });
 Route::view('/', 'site.pages.homepage');
 
-Route::view('/admin', 'admin.dashboard.index');
 
 Auth::routes();
 Route::get('/email/verify', function(){
