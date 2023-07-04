@@ -34,11 +34,11 @@
   <body class="" id="body">
     <div class="container d-flex align-items-center justify-content-center vh-100">
       <div class="row justify-content-center">
-        <div class="col-lg-6 col-md-10">
+        <div class="col-lg-8 col-md-10">
           <div class="card">
             <div class="card-header bg-primary">
               <div class="app-brand">
-                <a href="/index.html">
+                <a href="{{route('admin.login')}}">
                   <svg class="brand-icon" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" width="30" height="33"
                     viewBox="0 0 30 33">
                     <g fill="none" fill-rule="evenodd">
@@ -55,7 +55,8 @@
             <div class="card-body p-5">
               <h4 class="text-dark mb-5">Sign In</h4>
 
-              <form action="/index.html">
+              <form action="{{route('admin.login.post')}}" method="POST">
+                @csrf
                 <div class="row">
                   <div class="form-group col-md-12 mb-4">
                     <input type="email" class="form-control input-lg" id="email" aria-describedby="emailHelp" placeholder="Username">
@@ -74,7 +75,7 @@
                         </label>
                       </div>
 
-                      <p><a class="text-blue" href="#">Forgot Your Password?</a></p>
+                      {{-- <p><a class="text-blue" href="#">Forgot Your Password?</a></p> --}}
                     </div>
 
                     <button type="submit" class="btn btn-lg btn-primary btn-block mb-4">Sign In</button>
