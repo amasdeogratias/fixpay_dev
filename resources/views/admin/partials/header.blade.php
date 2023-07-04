@@ -25,14 +25,17 @@
           <li class="dropdown user-menu">
             <button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
               <img src="{{('backend/assets/img/user/user.png')}}" class="user-image" alt="User Image" />
-              <span class="d-none d-lg-inline-block">Deo amas</span>
+              <span class="d-none d-lg-inline-block">@auth {{Auth::user()->name}} @endauth</span>
             </button>
             <ul class="dropdown-menu dropdown-menu-right">
               <!-- User image -->
               <li class="dropdown-header">
                 <img src="{{('backend/assets/img/user/user.png')}}" class="img-circle" alt="User Image" />
                 <div class="d-inline-block">
-                  Deo Amas <small class="pt-1">iamdeo@gmail.com</small>
+                    @auth
+                        {{Auth::user()->name}} <small class="pt-1">{{Auth::user()->email}}</small>
+                    @endauth
+
                 </div>
               </li>
 
