@@ -55,7 +55,7 @@ class LoginController extends Controller
         ], $request->get('remember'))){
             return redirect()->intended(route('admin.dashboard'));
         }
-        return back()->withInput($request->only('email', 'remember'));
+        return back()->withErrors(['message'=>'Incorrect username or password']);
      }
 
     /**

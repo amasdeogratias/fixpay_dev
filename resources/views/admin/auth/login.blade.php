@@ -53,7 +53,10 @@
             </div>
 
             <div class="card-body p-5">
-              <h4 class="text-dark mb-5">Sign In</h4>
+                <h4 class="text-dark mb-5">Sign In</h4>
+                @if($errors->any())
+                    <h4 style="color:red">{{$errors->first()}}</h4>
+                @endif
 
               <form action="{{route('admin.login.post')}}" method="POST">
                 @csrf
