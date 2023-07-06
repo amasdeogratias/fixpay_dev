@@ -27,4 +27,42 @@ trait FlashMessages
      * @var array
      */
     protected $warningMessages = [];
+
+    //define setter and getter methods for flash messages
+
+    /**
+     * @param $message
+     * @param $type
+     */
+    protected function setFlashMessage($message, $type)
+    {
+        $model = 'infoMessages';
+        switch($type)
+        {
+            case 'info':{
+                $model = 'infoMessages';
+            }
+            break;
+            case 'error':{
+                $model = 'errorMessages';
+            }
+            break;
+            case 'success':{
+                $model = 'successMessages';
+            }
+            break;
+            case 'warning':{
+                $model = 'warningMessages';
+            }
+            break;
+        }
+
+        if(is_array($message)){
+            foreach($message as $key => $value){
+                array_push($this->model, $value);
+            }
+        }else{
+            array_push($model, $message);
+        }
+    }
 }
