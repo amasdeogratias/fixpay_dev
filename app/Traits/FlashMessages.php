@@ -28,7 +28,7 @@ trait FlashMessages
      */
     protected $warningMessages = [];
 
-    //define setter and getter methods for flash messages
+    //define setter method for flash messages
 
     /**
      * @param $message
@@ -64,5 +64,31 @@ trait FlashMessages
         }else{
             array_push($model, $message);
         }
+    }
+
+    //define  getter method for flash messages
+
+    /**
+     * @var array
+     */
+    protected function getFlashMessage()
+    {
+        return [
+            'error'   => $this->errorMessages,
+            'info'    => $this->infoMessages,
+            'success' => $this->successMessages,
+            'warning' => $this->warningMessages,
+        ];
+    }
+
+    /**
+     * Flushing flash messages to Laravel's session
+     */
+    protected function showFlashMessages()
+    {
+        session()->flash('error', $this->errorMessages);
+        session()->flash('info', $this->infoMessages);
+        session()->flash('success', $this->successMessages);
+        session()->flash('warning', $this->warningMessages);
     }
 }
