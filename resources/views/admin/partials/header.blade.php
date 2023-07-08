@@ -25,7 +25,7 @@
           <li class="dropdown user-menu">
             <button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
               <img src="{{('backend/assets/img/user/user.png')}}" class="user-image" alt="User Image" />
-              <span class="d-none d-lg-inline-block">@auth {{Auth::user()->name}} @endauth</span>
+              <span class="d-none d-lg-inline-block">@auth {{auth()->user()->name}} @endauth</span>
             </button>
             <ul class="dropdown-menu dropdown-menu-right">
               <!-- User image -->
@@ -33,7 +33,7 @@
                 <img src="{{('backend/assets/img/user/user.png')}}" class="img-circle" alt="User Image" />
                 <div class="d-inline-block">
                     @auth
-                        {{Auth::user()->name}} <small class="pt-1">{{Auth::user()->email}}</small>
+                        {{auth()->user()->name}} <small class="pt-1">{{auth()->user()->email}}</small>
                     @endauth
 
                 </div>
