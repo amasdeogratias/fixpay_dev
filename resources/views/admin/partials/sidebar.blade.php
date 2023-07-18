@@ -25,7 +25,7 @@
         <!-- sidebar menu -->
         <ul class="nav sidebar-inner" id="sidebar-menu">
           <li class="active">
-            <a class="sidenav-item-link" href="">
+            <a class="sidenav-item-link" href="{{route('admin.dashboard')}}">
               <i class="mdi mdi-view-dashboard-outline"></i>
               <span class="nav-text">Dashboard</span></b>
             </a>
@@ -34,21 +34,20 @@
             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#dashboard"
               aria-expanded="false" aria-controls="dashboard">
               <i class="mdi mdi-view-dashboard-outline"></i>
-              <span class="nav-text">Dashboard</span> <b class="caret"></b>
+              <span class="nav-text">Categories</span> <b class="caret"></b>
             </a>
 
             <ul class="collapse show" id="dashboard" data-parent="#sidebar-menu">
               <div class="sub-menu">
-                <li class="active">
-                  <a class="sidenav-item-link" href="index.html">
-                    <span class="nav-text">Ecommerce</span>
+                <li class="{{Route::currentRouteName() == 'admin.categories.create' ? 'active' : ''}}">
+                  <a class="sidenav-item-link" href="{{route('admin.categories.create')}}">
+                    <span class="nav-text">Add</span>
                   </a>
                 </li>
 
-                <li class="">
-                  <a class="sidenav-item-link" href="analytics.html">
-                    <span class="nav-text">Analytics</span>
-                    <span class="badge badge-success">new</span>
+                <li class="{{Route::currentRouteName() == 'admin.categories.index' ? 'active' : ''}}">
+                  <a class="sidenav-item-link" href="{{route('admin.categories.index')}}">
+                    <span class="nav-text">View</span>
                   </a>
                 </li>
               </div>
