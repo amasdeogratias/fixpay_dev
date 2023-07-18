@@ -101,9 +101,9 @@ class SettingsTableSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run()
     {
-        foreach($settings as $key =>$setting)
+        foreach($this->settings as $key => $setting)
         {
             $result = Setting::create($setting);
             if(!$result){
