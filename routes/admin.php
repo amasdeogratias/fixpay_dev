@@ -1,7 +1,8 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\{
-    LoginController
+    LoginController,
+    CategoryController
 };
 
 /*
@@ -27,6 +28,11 @@ Route::group(['prefix'=>'admin'], function() {
         })->name('admin.dashboard');
 
 
+    });
+
+    Route::group(['prefix' => 'categories'], function(){
+        Route::get('/', [CategoryController::class, 'index'])->name('admin.categories.index');
+        Route::get('/create', [CategoryController::class, 'create'])->name('admin.categories.create');
     });
 
 });
