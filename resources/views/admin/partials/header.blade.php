@@ -1,56 +1,32 @@
-<header class="main-header " id="header">
-    <nav class="navbar navbar-static-top navbar-expand-lg">
-      <!-- Sidebar toggle button -->
-      <button id="sidebar-toggler" class="sidebar-toggle">
-        <span class="sr-only">Toggle navigation</span>
-      </button>
-      <!-- search form -->
-      <div class="search-form d-none d-lg-inline-block">
-        <div class="input-group">
-          <button type="button" name="search" id="search-btn" class="btn btn-flat">
-            <i class="mdi mdi-magnify"></i>
-          </button>
-          <input type="text" name="query" id="search-input" class="form-control" placeholder="search..."
-            autofocus autocomplete="off" />
+<nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+      </li>
+    </ul>
+    <h4 style="margin-left: 10px;margin-top: 5px;">FixPay</h4>
+    <ul class="navbar-nav ml-auto">
+      <!-- Messages Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+            @auth {{auth()->user()->name}} @endauth
+        </a>
+
+
+        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{{route('admin.logout')}}"
+               onclick="event.preventDefault();
+                             document.getElementById('logout-form').submit();">
+                {{ __('Logout') }}
+            </a>
+
+            <form id="logout-form" action="{{route('admin.logout')}}" method="POST" class="d-none">
+                @csrf
+            </form>
         </div>
-        <div id="search-results-container">
-          <ul id="search-results"></ul>
-        </div>
-      </div>
+    </li>
+    </ul>
 
-      <div class="navbar-right ">
-        <ul class="nav navbar-nav">
-
-          <!-- User Account -->
-          <li class="dropdown user-menu">
-            <button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-              <img src="{{('backend/assets/img/user/user.png')}}" class="user-image" alt="User Image" />
-              <span class="d-none d-lg-inline-block">@auth {{auth()->user()->name}} @endauth</span>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-right">
-              <!-- User image -->
-              <li class="dropdown-header">
-                <img src="{{('backend/assets/img/user/user.png')}}" class="img-circle" alt="User Image" />
-                <div class="d-inline-block">
-                    @auth
-                        {{auth()->user()->name}} <small class="pt-1">{{auth()->user()->email}}</small>
-                    @endauth
-
-                </div>
-              </li>
-
-              <li>
-                <a href="user-profile.html">
-                  <i class="mdi mdi-account"></i> My Profile
-                </a>
-              </li>
-
-              <li class="dropdown-footer">
-                <a href="{{route('admin.logout')}}"> <i class="mdi mdi-logout"></i> Log Out </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </header>
+    <!-- Right navbar links -->
+  </nav>

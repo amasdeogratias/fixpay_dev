@@ -1,109 +1,82 @@
-<aside class="left-sidebar bg-sidebar">
-    <div id="sidebar" class="sidebar sidebar-with-footer">
-      <!-- Aplication Brand -->
-      <div class="app-brand">
-        <a href="/index.html" title="Sleek Dashboard">
-          <svg
-            class="brand-icon"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="xMidYMid"
-            width="30"
-            height="33"
-            viewBox="0 0 30 33">
-            <g fill="none" fill-rule="evenodd">
-              <path class="logo-fill-blue" fill="#7DBCFF" d="M0 4v25l8 4V0zM22 4v25l8 4V0z" />
-              <path class="logo-fill-white" fill="#FFF" d="M11 4v25l8 4V0z" />
-            </g>
-          </svg>
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="/" class="brand-link">
+      <!-- <img src="{% static 'dist/img/logo.png' %}" alt="SMS" class="brand-image img-circle elevation-3"
+           style="opacity: .8"> -->
+      <span class="brand-text font-weight-light">FixPay</span>
+    </a>
 
-          <span class="brand-name text-truncate">FixPay</span>
-        </a>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="{{ asset('backend/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">Admin</a>
+        </div>
       </div>
 
-      <!-- begin sidebar scrollbar -->
-      <div class="" data-simplebar style="height: 100%;">
-        <!-- sidebar menu -->
-        <ul class="nav sidebar-inner" id="sidebar-menu">
-          <li class="active">
-            <a class="sidenav-item-link" href="{{route('admin.dashboard')}}">
-              <i class="mdi mdi-view-dashboard-outline"></i>
-              <span class="nav-text">Dashboard</span></b>
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a href="{{route('admin.dashboard')}}" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>Dashboard</p>
             </a>
           </li>
-          <li class="has-sub expand">
-            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#dashboard"
-              aria-expanded="false" aria-controls="dashboard">
-              <i class="mdi mdi-view-dashboard-outline"></i>
-              <span class="nav-text">Categories</span> <b class="caret"></b>
+          <li class="nav-item">
+            <a href="{{route('admin.categories.index')}}" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+                <p>Categories</p>
             </a>
-
-            <ul class="collapse show" id="dashboard" data-parent="#sidebar-menu">
-              <div class="sub-menu">
-                <li class="{{Route::currentRouteName() == 'admin.categories.create' ? 'active' : ''}}">
-                  <a class="sidenav-item-link" href="{{route('admin.categories.create')}}">
-                    <span class="nav-text">Add</span>
-                  </a>
-                </li>
-
-                <li class="{{Route::currentRouteName() == 'admin.categories.index' ? 'active' : ''}}">
-                  <a class="sidenav-item-link" href="{{route('admin.categories.index')}}">
-                    <span class="nav-text">View</span>
-                  </a>
-                </li>
-              </div>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+                Master
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Location Master
+                  </p>
+                </a>
+              </li>
             </ul>
           </li>
-
-          <li class="has-sub ">
-            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#app"
-              aria-expanded="false" aria-controls="app">
-              <i class="mdi mdi-pencil-box-multiple"></i>
-              <span class="nav-text">App</span> <b class="caret"></b>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+                Manage
+                <i class="fas fa-angle-left right"></i>
+              </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Security Management
+                  </p>
+                </a>
+              </li>
 
-            <ul class="collapse " id="app" data-parent="#sidebar-menu">
-              <div class="sub-menu">
-                <li class="">
-                  <a class="sidenav-item-link" href="chat.html">
-                    <span class="nav-text">Chat</span>
-                  </a>
-                </li>
-
-                <li class="">
-                  <a class="sidenav-item-link" href="contacts.html">
-                    <span class="nav-text">Contacts</span>
-                  </a>
-                </li>
-
-                <li class="">
-                  <a class="sidenav-item-link" href="team.html">
-                    <span class="nav-text">Team</span>
-                  </a>
-                </li>
-
-                <li class="">
-                  <a class="sidenav-item-link" href="calendar.html">
-                    <span class="nav-text">Calendar</span>
-                  </a>
-                </li>
-              </div>
             </ul>
           </li>
-
-          <!-- <li class="section-title">
-            UI Elements
-          </li> -->
-
-          <!-- <li class="section-title">
-            Pages
-          </li> -->
-
-          <!-- <li class="section-title">
-            Documentation
-          </li> -->
         </ul>
-      </div>
-
-
+      </nav>
+      <!-- /.sidebar-menu -->
     </div>
+    <!-- /.sidebar -->
   </aside>
