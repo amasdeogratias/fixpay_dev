@@ -21,8 +21,31 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-
+                <div class="col-12">
+                    <div class="card card-default">
+                        <div class="card-header">
+                            <h3 class="card-title"></h3>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-bordered table-hover" id="example2">
+                                <thead>
+                                    <tr>
+                                        <th> # </th>
+                                        <th> Name </th>
+                                        <th> Slug </th>
+                                        <th class="text-center"> Parent </th>
+                                        <th class="text-center"> Featured </th>
+                                        <th class="text-center"> Menu </th>
+                                        <th class="text-center"> Order </th>
+                                        <th style="width:100px; min-width:100px;" class="text-center text-danger"><i class="fa fa-bolt"> </i></th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 @endsection
+
