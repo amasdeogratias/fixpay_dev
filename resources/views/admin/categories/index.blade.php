@@ -40,6 +40,16 @@
                                         <th style="width:100px; min-width:100px;" class="text-center text-danger"><i class="fa fa-bolt"> </i></th>
                                     </tr>
                                 </thead>
+                                <tbody>
+                                    @foreach ($categories as $category )
+                                    <tr>
+                                        <td>{{$category->id}}</td>
+                                        <td>{{$category->name}}</td>
+                                        <td>{{$category->slug}}</td>
+                                    </tr>
+
+                                    @endforeach
+                                </tbody>
                             </table>
                         </div>
                     </div>

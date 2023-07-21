@@ -2,17 +2,27 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+
+use App\Http\Controllers\BaseController;
+use App\Contracts\CategoryContract;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+
+class CategoryController extends BaseController
 {
+    protected $categoryRepository;
+
+    public function __construct(CategoryContract $categoryRepository)
+    {
+        $this->categoryRepository = $categoryRepository;
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('admin.categories.index');
+        $categories = $this->categoryRepository->listCategories();
+        return view('admin.categories.index', compact('categories'));
     }
 
     /**
