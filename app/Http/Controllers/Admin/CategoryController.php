@@ -30,7 +30,8 @@ class CategoryController extends BaseController
      */
     public function create()
     {
-        return view('admin.categories.create');
+        $categories = $this->categoryRepository->treeList();
+        return view('admin.categories.create',compact('categories'));
     }
 
     /**

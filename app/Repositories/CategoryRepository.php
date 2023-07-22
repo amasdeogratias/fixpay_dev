@@ -17,4 +17,13 @@ class CategoryRepository extends BaseRepository implements CategoryContract
     {
         return $this->all($columns, $order, $sort);
     }
+
+    public function treeList()
+    {
+        return Category::orderByRaw('-name ASC')
+                ->get();
+                // ->nest()
+                // ->setIndent('|-- ')
+                // ->listFlattened('name');
+    }
 }

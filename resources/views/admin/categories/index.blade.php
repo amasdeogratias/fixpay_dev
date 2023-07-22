@@ -25,6 +25,7 @@
                     <div class="card card-default">
                         <div class="card-header">
                             <h3 class="card-title"></h3>
+                            <a href="{{route('admin.categories.create')}}" class="btn btn-success"><i class="fa fa-plus-circle">Add Category</i></a>
                         </div>
                         <div class="card-body">
                             <table class="table table-bordered table-hover" id="example2">
