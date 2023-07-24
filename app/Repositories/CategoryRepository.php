@@ -44,6 +44,7 @@ class CategoryRepository extends BaseRepository implements CategoryContract
             $category = new Category($merge->all());
 
             $category->save();
+            return $category;
 
         }catch(QueryException $e){
             throw new InvalidArgumentException($e->getMessage());

@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\BaseController;
 use App\Contracts\CategoryContract;
 use Illuminate\Http\Request;
+use App\Models\Category;
 
 
 class CategoryController extends BaseController
@@ -40,7 +41,19 @@ class CategoryController extends BaseController
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required|max:191',
+            'parent_id' => 'required|not_in:0',
+
+        ]);
+
+        $params = $request->except('_token');
+        $category = $this->categoryRepository->createCategory($params);
+
+        if(!$category){
+            return $this->responseRedirectBack('Error occurred while creating category.', 'error', true, true);
+        }
+        return $this->responseRedirect('admin.categories.index', 'Category added successfully' ,'success',false, false);
     }
 
     /**

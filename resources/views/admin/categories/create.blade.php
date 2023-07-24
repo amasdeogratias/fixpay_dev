@@ -27,13 +27,13 @@
                             <h3 class="card-title">Create Category</h3>
                         </div>
                         <div class="card-body">
-                            <form action="{{route('admin.categories.store')}}" method="post" autocomplete="off">
+                            <form action="{{route('admin.categories.store')}}" method="post" autocomplete="off" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
                                     <div class="form-group col-md-6">
-                                        <label for="category_name">Name<span class="m-l-5 text-danger"> *</span></label>
-                                        <input type="text" class="form-control @error('category_name') is-invalid @enderror" name="category_name" id="category_name" placeholder="Category name">
-                                        @error('category_name')
+                                        <label for="name">Name<span class="m-l-5 text-danger"> *</span></label>
+                                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="Category name" {{ old('name') }}>
+                                        @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
