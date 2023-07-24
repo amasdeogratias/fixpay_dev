@@ -27,10 +27,11 @@ Route::group(['prefix'=>'admin'], function() {
             return view('admin.dashboard.index');
         })->name('admin.dashboard');
 
-        
+
         Route::group(['prefix' => 'categories'], function(){
             Route::get('/', [CategoryController::class, 'index'])->name('admin.categories.index');
             Route::get('/create', [CategoryController::class, 'create'])->name('admin.categories.create');
+            Route::post('/store', [CategoryController::class, 'store'])->name('admin.categories.store');
         });
 
     });

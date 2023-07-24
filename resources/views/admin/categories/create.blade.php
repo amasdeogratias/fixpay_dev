@@ -27,7 +27,7 @@
                             <h3 class="card-title">Create Category</h3>
                         </div>
                         <div class="card-body">
-                            <form action="" method="post" autocomplete="off">
+                            <form action="{{route('admin.categories.store')}}" method="post" autocomplete="off">
                                 @csrf
                                 <div class="row">
                                     <div class="form-group col-md-6">

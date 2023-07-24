@@ -7,7 +7,8 @@ interface CategoryContract
 
     public function treeList(); //return view category
 
-    // public function findCategoryById(int $id);
 
-    // public function createCategory(array $params);
+    public function createCategory(array $params);
+
+    // public function findCategoryById(int $id);
 }

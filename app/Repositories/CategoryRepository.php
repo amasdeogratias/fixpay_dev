@@ -26,4 +26,27 @@ class CategoryRepository extends BaseRepository implements CategoryContract
                 // ->setIndent('|-- ')
                 // ->listFlattened('name');
     }
+
+    public function createCategory(array $params)
+    {
+        try{
+            $collection = collect($params);
+
+            $image = null;
+            if($collection->has('image') && ($params['image'] instanceof UploadedFile)){
+                $image = $this->uploadOne($params['image'], 'categories');
+            }
+
+            $featured = $collection->has('featured') ? 1 : 0;
+            $menu = $collection->has('menu') ? 1 : 0;
+
+            $merge = $collection->merge(compact('menu', 'image', 'featured'));
+            $category = new Category($merge->all());
+
+            $category->save();
+
+        }catch(QueryException $e){
+            throw new InvalidArgumentException($e->getMessage());
+        }
+    }
 }
