@@ -14,16 +14,10 @@
         </a>
 
 
-        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{{route('admin.logout')}}"
-               onclick="event.preventDefault();
-                             document.getElementById('logout-form').submit();">
-                {{ __('Logout') }}
+        <div class="dropdown-menu  dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{{ route('admin.logout') }}">
+                <i class="fa fa-sign-out"></i> Logout
             </a>
-
-            <form id="logout-form" action="{{route('admin.logout')}}" method="POST" class="d-none">
-                @csrf
-            </form>
         </div>
     </li>
     </ul>
