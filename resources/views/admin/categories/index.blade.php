@@ -42,11 +42,38 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @php
+                                        $i=1;
+                                    @endphp
                                     @foreach ($categories as $category )
                                     <tr>
-                                        <td>{{$category->id}}</td>
-                                        <td>{{$category->name}}</td>
-                                        <td>{{$category->slug}}</td>
+                                        <td>{{$i++}}</td>
+                                        <td>{{ $category->name }}</td>
+                                        <td>{{ $category->slug }}</td>
+                                        <td>{{ $category->description }}</td>
+                                        <td class="text-center">
+                                            @if ($category->featured == 1)
+                                                <span class="badge badge-success">Yes</span>
+                                            @else
+                                                <span class="badge badge-danger">No</span>
+                                            @endif
+                                        </td>
+                                        <td class="text-center">
+                                            @if ($category->menu == 1)
+                                                <span class="badge badge-success">Yes</span>
+                                            @else
+                                                <span class="badge badge-danger">No</span>
+                                            @endif
+                                        </td>
+                                        <td class="text-center">
+                                            {{ $category->order }}
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group" role="group" aria-label="Second group">
+                                                <a href="" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
+                                                <a href="" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+                                            </div>
+                                        </td>
                                     </tr>
 
                                     @endforeach
