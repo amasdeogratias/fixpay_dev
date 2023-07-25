@@ -69,10 +69,8 @@
                                             {{ $category->order }}
                                         </td>
                                         <td class="text-center">
-                                            <div class="btn-group" role="group" aria-label="Second group">
-                                                <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
-                                                <a href="" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
-                                            </div>
+                                            <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                                            <a href="{{ route('admin.categories.delete', $category->id) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
 

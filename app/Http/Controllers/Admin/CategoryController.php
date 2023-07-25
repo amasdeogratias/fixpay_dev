@@ -102,6 +102,10 @@ class CategoryController extends BaseController
      */
     public function destroy(string $id)
     {
-        //
+        $category = $this->categoryRepository->deleteCategory($id);
+        if (!$category) {
+            return $this->responseRedirectBack('Error occurred while deleting category.', 'error', true, true);
+        }
+        return $this->responseRedirect('admin.categories.index', 'Category deleted successfully' ,'success',false, false);
     }
 }
