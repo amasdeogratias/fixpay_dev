@@ -11,4 +11,6 @@ interface CategoryContract
     public function createCategory(array $params);
 
     public function findCategoryById(int $id);
+
+    public function updateCategory(array $params);
 }

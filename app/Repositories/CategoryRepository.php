@@ -63,4 +63,26 @@ class CategoryRepository extends BaseRepository implements CategoryContract
             throw new ModelNotFoundException($e);
         }
     }
+
+    public function updateCategory(array $params)
+    {
+        $category = $this->findCategoryById($params['id']);
+        $collection = collect($params)->except('_token');
+
+        //check if collection has image
+        if($collection->has('image') && ($params['image'] instanceof UploadedFile)){
+            if($category->image !=null){
+                $this->deleteOne($category->image);
+            }
+            $image = $this->uploadOne($params['image'], 'categories');
+        }
+        $featured = $collection->has('featured') ? 1 : 0;
+        $menu = $collection->has('menu') ? 1 : 0;
+
+        $merge = $collection->merge(compact('menu', 'image', 'featured'));
+
+        $category->update($merge->all());
+
+        return $category;
+    }
 }
