@@ -4,6 +4,10 @@ namespace App\Repositories;
 
 use App\Models\Category;
 use App\Contracts\CategoryContract;
+use Illuminate\Database\QueryException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Doctrine\Instantiator\Exception\InvalidArgumentException;
+
 
 class CategoryRepository extends BaseRepository implements CategoryContract
 {
@@ -21,10 +25,10 @@ class CategoryRepository extends BaseRepository implements CategoryContract
     public function treeList()
     {
         return Category::orderByRaw('-name ASC')
-                ->get();
-                // ->nest()
-                // ->setIndent('|-- ')
-                // ->listFlattened('name');
+                ->get()
+                ->nest()
+                ->setIndent('|-- ')
+                ->listsFlattened('name');
     }
 
     public function createCategory(array $params)
@@ -48,6 +52,15 @@ class CategoryRepository extends BaseRepository implements CategoryContract
 
         }catch(QueryException $e){
             throw new InvalidArgumentException($e->getMessage());
+        }
+    }
+
+    public function findCategoryById(int $id)
+    {
+        try{
+            return $this->findOneOrFail($id);
+        }catch(ModelNotFoundException $e){
+            throw new ModelNotFoundException($e);
         }
     }
 }
