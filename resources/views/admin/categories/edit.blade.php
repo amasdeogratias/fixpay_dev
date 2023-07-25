@@ -62,20 +62,26 @@
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label class="control-label">Category Image</label>
-                                        <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image"/>
+                                        @if ($targetCategory->image !='')
+                                            <figure class="mt-2" style="width: 80px; height: auto;">
+                                                <img src="{{ asset('storage/'.$targetCategory->image) }}" id="categoryImage" class="img-fluid" alt="img">
+                                            </figure>
+                                        @else
+                                            <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image"/>
+                                        @endif
                                         @error('image') {{ $message }} @enderror
                                     </div>
                                     <div class="form-group col-md-6">
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input class="form-check-input" type="checkbox" id="featured" name="featured"/>Featured Category
+                                                <input class="form-check-input" type="checkbox" id="featured" name="featured" {{ $targetCategory->featured == 1 ? 'checked' : '' }}/>Featured Category
                                             </label>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input class="form-check-input" type="checkbox" id="menu" name="menu"/>Show in Menu
+                                                <input class="form-check-input" type="checkbox" id="menu" name="menu" {{ $targetCategory->menu == 1 ? 'checked' : '' }}/>Show in Menu
                                             </label>
                                         </div>
                                     </div>
