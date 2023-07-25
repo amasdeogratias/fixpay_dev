@@ -69,7 +69,10 @@ class CategoryController extends BaseController
      */
     public function edit(string $id)
     {
-        //
+        $targetCategory = $this->categoryRepository->findCategoryById($id);
+        $categories = $this->categoryRepository->treeList();
+        $this->setPageTitle('Categories', 'Edit Category: '.$targetCategory->name);
+        return view('admin.categories.edit',compact('categories', 'targetCategory'));
     }
 
     /**

@@ -25,6 +25,7 @@
                     <div class="card card-primary card-outline">
                         <div class="card-header">
                             <h3 class="card-title">Create Category</h3>
+                            @include('admin.partials.flash')
                         </div>
                         <div class="card-body">
                             <form action="{{route('admin.categories.store')}}" method="post" autocomplete="off" enctype="multipart/form-data">
@@ -49,7 +50,7 @@
                                         <select id=parent class="form-control custom-select mt-15 @error('parent_id') is-invalid @enderror" name="parent_id">
                                             <option value="0">Select a parent category</option>
                                             @foreach($categories as $key => $category)
-                                                <option value="{{ $category->id }}"> {{ $category->name }} </option>
+                                                <option value="{{ $key }}"> {{ $category }} </option>
                                             @endforeach
                                         </select>
                                         @error('parent_id') {{ $message }} @enderror
