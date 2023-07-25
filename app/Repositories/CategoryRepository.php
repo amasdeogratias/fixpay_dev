@@ -84,4 +84,16 @@ class CategoryRepository extends BaseRepository implements CategoryContract
         $category->update($merge->all());
         return $category;
     }
+
+
+    public function deleteCategory($id)
+    {
+        $category = $this->findCategoryById($id);
+        if($category->image !=null){
+            $this->deleteOne($category->image);
+        }
+
+        $category->delete();
+        return $category;
+    }
 }

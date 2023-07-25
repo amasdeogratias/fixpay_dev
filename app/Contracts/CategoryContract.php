@@ -13,4 +13,6 @@ interface CategoryContract
     public function findCategoryById(int $id);
 
     public function updateCategory(array $params);
+
+    public function deleteCategory($id);
 }
