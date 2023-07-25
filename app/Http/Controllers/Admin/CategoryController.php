@@ -53,7 +53,7 @@ class CategoryController extends BaseController
         if(!$category){
             return $this->responseRedirectBack('Error occurred while creating category.', 'error', true, true);
         }
-        return $this->responseRedirect('admin.categories.index', 'Category added successfully' ,'success',false, false);
+        return $this->responseRedirect('admin.categories.create', 'Category added successfully' ,'success',false, false);
     }
 
     /**
