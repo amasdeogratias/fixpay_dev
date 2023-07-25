@@ -28,7 +28,7 @@
                             @include('admin.partials.flash')
                         </div>
                         <div class="card-body">
-                            <form action="{{route('admin.categories.store')}}" method="post" autocomplete="off" enctype="multipart/form-data">
+                            <form action="{{route('admin.categories.update')}}" method="post" autocomplete="off" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
                                     <div class="form-group col-md-6">

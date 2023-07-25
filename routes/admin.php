@@ -33,6 +33,7 @@ Route::group(['prefix'=>'admin'], function() {
             Route::get('/create', [CategoryController::class, 'create'])->name('admin.categories.create');
             Route::post('/store', [CategoryController::class, 'store'])->name('admin.categories.store');
             Route::get('/{id}/edit', [CategoryController::class, 'edit'])->name('admin.categories.edit');
+            Route::post('/update', [CategoryController::class, 'update'])->name('admin.categories.update');
         });
 
     });

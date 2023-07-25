@@ -70,6 +70,7 @@ class CategoryRepository extends BaseRepository implements CategoryContract
         $collection = collect($params)->except('_token');
 
         //check if collection has image
+        $image = $collection->has('image');
         if($collection->has('image') && ($params['image'] instanceof UploadedFile)){
             if($category->image !=null){
                 $this->deleteOne($category->image);
@@ -80,9 +81,7 @@ class CategoryRepository extends BaseRepository implements CategoryContract
         $menu = $collection->has('menu') ? 1 : 0;
 
         $merge = $collection->merge(compact('menu', 'image', 'featured'));
-
         $category->update($merge->all());
-
         return $category;
     }
 }

@@ -78,9 +78,23 @@ class CategoryController extends BaseController
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|max:191',
+            'parent_id' => 'required|not_in:0',
+            'image'   => 'mimes:png,jpg, jpeg|max:1000'
+        ]);
+
+        // info($request); //log data
+        $params = $request->except('_token');
+
+        $category = $this->categoryRepository->updateCategory($params);
+        if(!$category)
+        {
+            return $this->responseRedirectBack('Error occurred while updating category.', 'error', true, true);
+        }
+        return $this->responseRedirectBack('Category updated successfully' ,'success',false, false);
     }
 
     /**
