@@ -2,7 +2,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\{
     LoginController,
-    CategoryController
+    CategoryController,
+    BrandController
 };
 
 /*
@@ -35,6 +36,15 @@ Route::group(['prefix'=>'admin'], function() {
             Route::get('/{id}/edit', [CategoryController::class, 'edit'])->name('admin.categories.edit');
             Route::post('/update', [CategoryController::class, 'update'])->name('admin.categories.update');
             Route::get('/{id}/delete', [CategoryController::class, 'destroy'])->name('admin.categories.delete');
+        });
+
+        Route::group(['prefix' => 'brands'], function(){
+            Route::get('/', [BrandController::class, 'index'])->name('admin.brands.index');
+            Route::get('/create', [BrandController::class, 'create'])->name('admin.brands.create');
+            Route::post('/store', [BrandController::class, 'store'])->name('admin.brands.store');
+            Route::get('/{id}/edit', [BrandController::class, 'edit'])->name('admin.brands.edit');
+            Route::post('/update', [BrandController::class, 'update'])->name('admin.brands.update');
+            Route::get('/{id}/delete', [BrandController::class, 'destroy'])->name('admin.categories.delete');
         });
 
     });

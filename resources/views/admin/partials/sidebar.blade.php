@@ -24,15 +24,21 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="{{route('admin.dashboard')}}" class="nav-link">
+            <a href="{{route('admin.dashboard')}}" class="nav-link {{Route::currentRouteName()=='admin.dashboard' ? 'active' : ''}}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>Dashboard</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{route('admin.categories.index')}}" class="nav-link">
-              <i class="far fa-circle nav-icon"></i>
+            <a href="{{route('admin.categories.index')}}" class="nav-link {{Route::currentRouteName()=='admin.categories.index' ? 'active' : ''}}">
+              <i class="fa fa-tags nav-icon"></i>
                 <p>Categories</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('admin.brands.index')}}" class="nav-link {{Route::currentRouteName()=='admin.brands.index' ? 'active' : ''}}">
+              <i class="fa fa-briefcase nav-icon"></i>
+                <p>Brands</p>
             </a>
           </li>
           <li class="nav-item has-treeview">
