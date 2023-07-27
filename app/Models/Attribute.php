@@ -17,4 +17,10 @@ class Attribute extends Model
         'is_filterable' => 'boolean',
         'is_required' => 'boolean'
     ];
+
+    //relationship btn attribute and attribute values
+    public function values()
+    {
+        return $this->hasMany(AttributeValue::class);
+    }
 }
