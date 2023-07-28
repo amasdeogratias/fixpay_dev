@@ -29,4 +29,21 @@ class BrandController extends BaseController
         $this->setPageTitle('Brands', 'Create Brand');
         return view('admin.brands.create');
     }
+
+    //store brands in the database
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required|max:191',
+            'logo' => 'mimes:png,jpg, jpeg'
+        ]);
+
+        $params = $request->except('_token');
+        // dd($params);
+        $brand = $this->brandRepository->createBrand($params);
+        if(!$brand){
+            return $this->responseRedirectBack('Error occured while creating Brand', 'error', true, true);
+        }
+        return $this->responseRedirect('admin.brands.create', 'Brands added successfully', 'success', false, false);
+    }
 }

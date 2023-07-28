@@ -39,6 +39,7 @@ class BrandRepository extends BaseRepository implements BrandContract
      public function createBrand(array $params)
      {
         try{
+            $logo = null;
             $collection = collect($params);
             if($collection->has('logo') && ($params['logo'] instanceof UploadedFile)){
                 $logo = $this->uploadOne($params['logo'], 'brands');

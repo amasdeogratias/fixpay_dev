@@ -25,6 +25,7 @@
                     <div class="card card-primary card-outline">
                         <div class="card-header">
                             <h3 class="card-title">{{ $subTitle }}</h3>
+                            <a href="{{route('admin.brands.index')}}" class="btn btn-success float-right"><i class="fa fa-list"> View brands</i></a>
                             @include('admin.partials.flash')
                         </div>
                         <div class="card-body">
