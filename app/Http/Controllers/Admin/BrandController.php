@@ -46,4 +46,13 @@ class BrandController extends BaseController
         }
         return $this->responseRedirect('admin.brands.create', 'Brands added successfully', 'success', false, false);
     }
+
+    //view edit brand form
+    public function edit($id)
+    {
+        $brand = $this->brandRepository->findBrandById($id);
+        // dd($brand);
+        $this->setPageTitle('Brands', 'Edit Brand: '.$brand->name);
+        return view('admin.brands.edit', compact('brand'));
+    }
 }
