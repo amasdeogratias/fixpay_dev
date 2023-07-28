@@ -12,6 +12,8 @@ use Doctrine\Instantiator\Exception\InvalidArgumentException;
 
 class BrandRepository extends BaseRepository implements BrandContract
 {
+    use Uploadable;
+
     public function __construct(Brand $model)
     {
         parent::__construct($model);
