@@ -22,4 +22,11 @@ class BrandController extends BaseController
         $this->setPageTitle('Brands', 'list of all brands');
         return view('admin.brands.index', compact('brands'));
     }
+
+    //create function to display brand create form
+    public function create()
+    {
+        $this->setPageTitle('Brands', 'Create Brand');
+        return view('admin.brands.create');
+    }
 }
