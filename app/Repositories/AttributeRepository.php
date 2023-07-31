@@ -46,7 +46,7 @@ class AttributeRepository extends BaseRepository implements AttributeContract
 
 
         }catch(QueryException $e){
-            throw new QueryException($e->getMessage());
+            throw new InvalidArgumentException($e->getMessage());
         }
     }
 
