@@ -41,6 +41,12 @@
                 <p>Brands</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{route('admin.attributes.index')}}" class="nav-link {{Route::currentRouteName()=='admin.attributes.index' ? 'active' : ''}}">
+              <i class="fa fa-th nav-icon"></i>
+                <p>Attributes</p>
+            </a>
+          </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>

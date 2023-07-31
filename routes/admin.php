@@ -3,7 +3,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\{
     LoginController,
     CategoryController,
-    BrandController
+    BrandController,
+    AttributeController
 };
 
 /*
@@ -45,6 +46,14 @@ Route::group(['prefix'=>'admin'], function() {
             Route::get('/{id}/edit', [BrandController::class, 'edit'])->name('admin.brands.edit');
             Route::post('/update', [BrandController::class, 'update'])->name('admin.brands.update');
             Route::get('/{id}/delete', [BrandController::class, 'destroy'])->name('admin.brands.delete');
+        });
+        Route::group(['prefix' => 'attributes'], function(){
+            Route::get('/', [AttributeController::class, 'index'])->name('admin.attributes.index');
+            Route::get('/create', [AttributeController::class, 'create'])->name('admin.attributes.create');
+            Route::post('/store', [AttributeController::class, 'store'])->name('admin.attributes.store');
+            Route::get('/{id}/edit', [AttributeController::class, 'edit'])->name('admin.attributes.edit');
+            Route::post('/update', [AttributeController::class, 'update'])->name('admin.attributes.update');
+            Route::get('/{id}/delete', [AttributeController::class, 'destroy'])->name('admin.attributes.delete');
         });
 
     });
