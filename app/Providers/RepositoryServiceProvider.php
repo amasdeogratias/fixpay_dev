@@ -3,16 +3,19 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Contracts\CategoryContract;
-use App\Repositories\CategoryRepository;
-use App\Contracts\BrandContract;
-use App\Repositories\BrandRepository;
+use App\Contracts\{
+    CategoryContract, BrandContract,AttributeContract
+};
+use App\Repositories\{
+    CategoryRepository,BrandRepository,AttributeRepository
+};
 
 class RepositoryServiceProvider extends ServiceProvider
 {
     protected $repositories = [
         CategoryContract::class      =>     CategoryRepository::class,
         BrandContract::class         =>     BrandRepository::class,
+        AttributeContract::class     =>     AttributeRepository::class,
     ];
     /**
      * Register services.
