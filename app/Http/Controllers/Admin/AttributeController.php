@@ -21,4 +21,10 @@ class AttributeController extends BaseController
         $this->setPageTitle('Attributes', 'List of Attributes');
         return view('admin.attributes.index', compact('attributes'));
     }
+
+    public function create()
+    {
+        $this->setPageTitle('Attributes', 'Create Attribute');
+        return view('admin.attributes.create');
+    }
 }
