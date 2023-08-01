@@ -28,7 +28,7 @@
                             <a href="{{route('admin.attributes.index')}}" class="btn btn-success float-right"><i class="fa fa-list"></i> View Attributes</a>
                         </div>
                         <div class="card-body">
-                            <form action="" method="post" role="form">
+                            <form action="{{ route('admin.attributes.store') }}" method="post" role="form">
                                 @csrf
                                 <div class="row">
                                     <div class="form-group col-md-6">
