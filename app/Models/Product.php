@@ -57,4 +57,14 @@ class Product extends Model
         return $this->hasMany(ProductAttribute::class);
     }
 
+    /**
+     * The categories that belong to the Product
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'product_categories', 'product_id', 'category_id');
+    }
+
 }
