@@ -4,7 +4,8 @@ use App\Http\Controllers\Admin\{
     LoginController,
     CategoryController,
     BrandController,
-    AttributeController
+    AttributeController,
+    ProductController
 };
 
 /*
@@ -55,6 +56,15 @@ Route::group(['prefix'=>'admin'], function() {
             Route::post('/update', [AttributeController::class, 'update'])->name('admin.attributes.update');
             Route::get('/{id}/delete', [AttributeController::class, 'destroy'])->name('admin.attributes.delete');
         });
+
+        Route::group(['prefix' => 'products'], function () {
+            Route::get('/', [ProductController::class, 'index'])->name('admin.products.index');
+            Route::get('/create', [ProductController::class, 'create'])->name('admin.products.create');
+            Route::post('/store', [ProductController::class, 'store'])->name('admin.products.store');
+            Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('admin.products.edit');
+            Route::post('/update', [ProductController::class, 'update'])->name('admin.products.update');
+
+         });
 
     });
 
