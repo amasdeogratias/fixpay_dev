@@ -22,4 +22,14 @@ class AttributeValue extends Model
     {
         return $this->belongsTo(Attribute::class);
     }
+
+    /**
+     * The productAttributes that belong to the AttributeValue
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function productAttributes()
+    {
+        return $this->belongsToMany(ProductAttribute::class);
+    }
 }

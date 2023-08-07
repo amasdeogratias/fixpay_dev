@@ -47,4 +47,14 @@ class Product extends Model
         return $this->hasMany(ProductImage::class);
     }
 
+    /**
+     * Get all of the attributes for the Product
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function attributes(): HasMany
+    {
+        return $this->hasMany(ProductAttribute::class);
+    }
+
 }
