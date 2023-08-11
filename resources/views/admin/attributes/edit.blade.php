@@ -91,6 +91,10 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="tab-pane" id="values">
+                            {{-- <script src="{{ mix('../../../js/app.js') }}" defer></script> --}}
+                            <attribute-values :attributeid="{{ $attribute->id }}"></attribute-values>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -99,3 +103,6 @@
 </div>
 
 @endsection
+@push('scripts')
+    <script src="{{ asset('backend/js/app.js') }}"></script>
+@endpush

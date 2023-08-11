@@ -30,6 +30,7 @@
       <!-- DataTables -->
       <link rel="stylesheet" href="{{asset('backend/plugins/datatables-bs4/css/dataTables.bootstrap4.css') }}">
     <title>@yield('title')-{{config('app.name')}}</title>
+    @yield('styles')
 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -73,6 +74,7 @@
     <!--datatables-->
     <script src="{{ asset('backend/plugins/datatables/jquery.dataTables.js')}}"></script>
     <script src="{{ asset('backend/plugins/datatables-bs4/js/dataTables.bootstrap4.js')}}"></script>
+    @stack('scripts')
     <script>
         $(document).ready(function(){
            $(".show_password").click(function(){
