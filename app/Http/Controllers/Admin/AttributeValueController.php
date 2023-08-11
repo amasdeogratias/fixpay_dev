@@ -23,6 +23,6 @@ class AttributeValueController extends Controller
         $attribute = $this->attributeRepository->findAttributeById($attributeId);
 
         $values = $attribute->values; //return all attributes values associated with attribute id/model
-        return response()->json($value);
+        return response()->json($values);
     }
 }
