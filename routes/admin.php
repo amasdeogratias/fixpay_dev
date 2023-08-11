@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\{
     CategoryController,
     BrandController,
     AttributeController,
+    AttributeValueController,
     ProductController
 };
 
@@ -55,6 +56,11 @@ Route::group(['prefix'=>'admin'], function() {
             Route::get('/{id}/edit', [AttributeController::class, 'edit'])->name('admin.attributes.edit');
             Route::post('/update', [AttributeController::class, 'update'])->name('admin.attributes.update');
             Route::get('/{id}/delete', [AttributeController::class, 'destroy'])->name('admin.attributes.delete');
+
+            Route::post('/get-values', [AttributeValueController::class, 'getValues']);
+            Route::post('/add-values', [AttributeValueController::class, 'addValues']);
+            Route::post('/update-values', [AttributeValueController::class, 'updateValues']);
+            Route::post('/delete-values', [AttributeValueController::class, 'deleteValues']);
         });
 
         Route::group(['prefix' => 'products'], function () {
