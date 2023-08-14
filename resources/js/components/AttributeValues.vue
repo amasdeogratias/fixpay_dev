@@ -1,38 +1,70 @@
 <template>
     <div id="">
-    <div class="tile">
-        <h3 class="tile-title">Option Values</h3>
-        <div class="tile-body">
-            <div class="table-responsive">
-                <table class="table table-sm">
-                    <thead>
-                    <tr class="text-center">
-                        <th>#</th>
-                        <th>Value</th>
-                        <th>Price</th>
-                        <th>Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr v-for="value in values">
-                        <td style="width: 25%" class="text-center">{{ value.id}}</td>
-                        <td style="width: 25%" class="text-center">{{ value.value}}</td>
-                        <td style="width: 25%" class="text-center">{{ value.price}}</td>
-                        <td style="width: 25%" class="text-center">
-                            <button class="btn btn-sm btn-primary">
-                                <i class="fa fa-edit"></i>
-                            </button>
-                            <button class="btn btn-sm btn-danger">
-                                <i class="fa fa-trash"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Attributes Values</h3>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="value" class="control-label">Value</label>
+                    <input type="text" name="value" id="value" class="form-control" placeholder="Enter attribute value" v-model="value">
+                </div>
+                <div class="form-group">
+                    <label for="price" class="control-label">Price</label>
+                    <input type="text" name="price" id="price" class="form-control" placeholder="Enter attribute price" v-model="price">
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="row d-print-none mt-2">
+                    <div class="col-12 text-right">
+                        <button class="btn btn-success" type="submit" @click.stop="saveValue()" v-if="addValue">
+                            <i class="fa fa-fw fa-lg fa-check-circle"></i>Save
+                        </button>
+                        <button class="btn btn-success" type="submit" @click.stop="updateValue()" v-if="!addValue">
+                            <i class="fa fa-fw fa-lg fa-check-circle"></i>Update
+                        </button>
+                        <button class="btn btn-primary" type="submit" @click.stop="reset()" v-if="!addValue">
+                            <i class="fa fa-fw fa-lg fa-check-circle"></i>Reset
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Option Values</h3>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-sm">
+                        <thead>
+                        <tr class="text-center">
+                            <th>#</th>
+                            <th>Value</th>
+                            <th>Price</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="value in values">
+                            <td style="width: 25%" class="text-center">{{ value.id}}</td>
+                            <td style="width: 25%" class="text-center">{{ value.value}}</td>
+                            <td style="width: 25%" class="text-center">{{ value.price}}</td>
+                            <td style="width: 25%" class="text-center">
+                                <button class="btn btn-sm btn-primary">
+                                    <i class="fa fa-edit"></i>
+                                </button>
+                                <button class="btn btn-sm btn-danger">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </template>
 
 <script>
