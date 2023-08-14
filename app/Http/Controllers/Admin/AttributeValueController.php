@@ -25,4 +25,16 @@ class AttributeValueController extends Controller
         $values = $attribute->values; //return all attributes values associated with attribute id/model
         return response()->json($values);
     }
+
+    //add new attributes values
+    public function addValues(Request $request)
+    {
+        $value = new AttributeValue();
+        $value->attribute_id = $request->input('id');
+        $value->value = $request->input('value');
+        $value->price = $request->input('price');
+        $value->save();
+
+        return response()->json($value);
+    }
 }
