@@ -29,12 +29,21 @@ class AttributeValueController extends Controller
     //add new attributes values
     public function addValues(Request $request)
     {
-        $value = new AttributeValue();
-        $value->attribute_id = $request->input('id');
-        $value->value = $request->input('value');
-        $value->price = $request->input('price');
-        $value->save();
+        $request->validate([
+            'value' => 'required',
+            'price' => 'required',
+        ]);
+        try{
+            $value = new AttributeValue();
+            $value->attribute_id = $request->input('id');
+            $value->value = $request->input('value');
+            $value->price = $request->input('price');
+            $value->save();
 
-        return response()->json($value);
+            return response()->json($value);
+        }catch(\Exception $e){
+            return response()->json(['Error' => 'Error occured while creating attributes'.$e->getMessage()], 500);
+        }
+
     }
 }
