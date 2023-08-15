@@ -76,7 +76,7 @@ import axios from 'axios';
             return {
                 values: [],
                 value: '',
-                price: '',
+                price: 0,
                 currentId: '',
                 addValue: true,
                 key: 0
@@ -97,6 +97,41 @@ import axios from 'axios';
                     console.log(error);
                 });
             },
+            saveValue() {
+                if(this.value === ''){
+                    this.$swal('Error', 'Value for attribute is required', {
+                        icon: "error",
+                    });
+                }else {
+                    let attributeId = this.attributeid;
+                    let _this = this;
+                    axios.post('/admin/attributes/add-values', {
+                        id: attributeId,
+                        value: _this.value,
+                        price: _this.price,
+                    },
+                    { headers:{'Content-Type':'application/json'}
+
+                    }).then(function(response) {
+                        console.log(response)
+                        _this.values.push(response.data);
+                        _this.resetValue();
+                        _this.$swal("Success! Value added successfully!", {
+                            icon: "success",
+                        });
+                    }).catch(error => {
+                        console.log(error);
+                    });
+                }
+            },
+            resetValue() {
+                this.value = '';
+                this.price = '';
+            },
+            reset() {
+                this.addValue = true;
+                this.resetValue();
+            }
         }
     }
 </script>
