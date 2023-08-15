@@ -51,7 +51,7 @@
                             <td style="width: 25%" class="text-center">{{ value.value}}</td>
                             <td style="width: 25%" class="text-center">{{ value.price}}</td>
                             <td style="width: 25%" class="text-center">
-                                <button class="btn btn-sm btn-primary">
+                                <button class="btn btn-sm btn-primary" @click.stop="editAttributeValue(value)">
                                     <i class="fa fa-edit"></i>
                                 </button>
                                 <button class="btn btn-sm btn-danger">
@@ -117,6 +117,38 @@ import axios from 'axios';
                         _this.values.push(response.data);
                         _this.resetValue();
                         _this.$swal("Success! Value added successfully!", {
+                            icon: "success",
+                        });
+                    }).catch(error => {
+                        console.log(error);
+                    });
+                }
+            },
+            editAttributeValue(value) {
+                this.addValue = false;
+                this.value = value.value;
+                this.price = value.price;
+                this.currentId = value.id;
+                this.key = this.values.indexOf(value);
+            },
+            updateValue() {
+                if(this.value === '') {
+                    this.$swal("Error, Value for attribute is required.", {
+                        icon:'error',
+                    });
+                } else {
+                    let attributeId = this.attributeid;
+                    let _this = this;
+                    axios.post('/admin/attributes/update-values', {
+                        id: attributeId,
+                        value: _this.value,
+                        price: _this.price,
+                        valueId: _this.currentId
+                    }).then(function(response) {
+                        _this.values.splice(_this.key, 1);
+                        _this.resetValue();
+                        _this.values.push(response.data);
+                        _this.$swal("Success! Value updated successfully!", {
                             icon: "success",
                         });
                     }).catch(error => {
