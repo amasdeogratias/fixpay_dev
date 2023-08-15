@@ -16897,6 +16897,39 @@ __webpack_require__.r(__webpack_exports__);
         });
       }
     },
+    deleteAttributeValue: function deleteAttributeValue(value) {
+      var _this2 = this;
+      this.$swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this attribute value!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true
+      }).then(function (willDelete) {
+        if (willDelete) {
+          _this2.currentId = value.id;
+          _this2.key = _this2.values.indexOf(value);
+          var _this = _this2;
+          axios__WEBPACK_IMPORTED_MODULE_0__["default"].post('/admin/attributes/delete-values', {
+            id: _this.currentId
+          }).then(function (response) {
+            if (response.data.status === 'success') {
+              _this.values.splice(_this.key, 1);
+              _this.resetValue();
+              _this.$swal("Success! Option value has been deleted!", {
+                icon: "success"
+              });
+            } else {
+              _this.$swal("Your option value not deleted!");
+            }
+          })["catch"](function (error) {
+            console.log(error);
+          });
+        } else {
+          _this2.$swal("Your option value not deleted!");
+        }
+      });
+    },
     resetValue: function resetValue() {
       this.value = '';
       this.price = '';
@@ -17018,12 +17051,11 @@ var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   "class": "fa fa-edit"
 }, null, -1 /* HOISTED */);
 var _hoisted_27 = [_hoisted_26];
-var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "btn btn-sm btn-danger"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_28 = ["onClick"];
+var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fa fa-trash"
-})], -1 /* HOISTED */);
-
+}, null, -1 /* HOISTED */);
+var _hoisted_30 = [_hoisted_29];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
@@ -17070,7 +17102,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
         return $options.editAttributeValue(value);
       }, ["stop"])
-    }, _hoisted_27, 8 /* PROPS */, _hoisted_25), _hoisted_28])]);
+    }, _hoisted_27, 8 /* PROPS */, _hoisted_25), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+      "class": "btn btn-sm btn-danger",
+      onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
+        return $options.deleteAttributeValue(value);
+      }, ["stop"])
+    }, _hoisted_30, 8 /* PROPS */, _hoisted_28)])]);
   }), 256 /* UNKEYED_FRAGMENT */))])])])])])]);
 }
 
