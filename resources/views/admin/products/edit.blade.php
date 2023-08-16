@@ -27,7 +27,7 @@
                             <h3 class="card-title"></h3>
                             @include('admin.partials.flash')
                         </div>
-                        <form action="{{ route('admin.products.store') }}" method="post">
+                        <form action="{{ route('admin.products.update') }}" method="post">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
