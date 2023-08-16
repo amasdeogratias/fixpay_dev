@@ -27,6 +27,10 @@
     <link rel="stylesheet" href="{{asset('backend/dist/css/skins/_all-skins.min.css')}}">
     <link rel="shortcut icon" href="{{ asset('backend/dist/img/logo.png') }}" type="image/x-icon">
 
+    <!--select 2 -->
+    <link rel="stylesheet" href="{{ asset('backend/plugins/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
+
       <!-- DataTables -->
       <link rel="stylesheet" href="{{asset('backend/plugins/datatables-bs4/css/dataTables.bootstrap4.css') }}">
     <title>@yield('title')-{{config('app.name')}}</title>
@@ -69,6 +73,8 @@
     <script src="{{ asset('backend/dist/js/adminlte.js')}}"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ asset('backend/dist/js/pages/dashboard.js')}}"></script>
+    <!-- select 2 -->
+    <script src="{{ asset('backend/plugins/select2/js/select2.full.min.js') }}"></script>
 
 
     <!--datatables-->
