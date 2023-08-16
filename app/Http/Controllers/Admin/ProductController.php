@@ -50,4 +50,14 @@ class ProductController extends BaseController
         }
         return $this->responseRedirect('admin.products.index', 'Product added successfully' ,'success',false, false);
     }
+
+    public function edit($id)
+    {
+        $product = $this->productRepository->findProductById($id);
+        $brands = $this->brandRepository->listBrands('name', 'asc');
+        $categories = $this->categoryRepository->listCategories('name', 'asc');
+
+        $this->setPageTitle('Products', 'Edit Product: '.$product->name);
+        return view('admin.products.edit', compact('categories', 'brands', 'product'));
+    }
 }
