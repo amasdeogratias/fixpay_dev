@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Contracts\BrandContract;
 use App\Contracts\CategoryContract;
 use App\Contracts\ProductContract;
+use App\Http\Requests\StoreProductFormRequest;
 use App\Http\Controllers\BaseController;
 
 class ProductController extends BaseController
@@ -38,5 +39,15 @@ class ProductController extends BaseController
         $this->setPageTitle('Products', 'Create Product');
         return view('admin.products.create', compact('categories', 'brands'));
 
+    }
+
+    public function store(StoreProductFormRequest $request)
+    {
+        $params = $request->except('_token');
+        $product = $this->productRepository->createProduct($params);
+        if (!$product) {
+            return $this->responseRedirectBack('Error occurred while creating product.', 'error', true, true);
+        }
+        return $this->responseRedirect('admin.products.index', 'Product added successfully' ,'success',false, false);
     }
 }
