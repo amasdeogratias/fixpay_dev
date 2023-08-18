@@ -9,7 +9,7 @@ class ProductAttribute extends Model
 {
     protected $table = 'product_attributes';
 
-    protected $fillable = ['product_id', 'quantity', 'price'];
+    protected $fillable = ['attribute_id', 'value', 'product_id', 'quantity', 'price'];
 
     /**
      * Get the product that owns the ProductAttribute
@@ -29,5 +29,15 @@ class ProductAttribute extends Model
     public function attributesValues()
     {
         return $this->belongsToMany(AttributeValue::class);
+    }
+
+    /**
+     * Get the attribute that owns the ProductAttribute
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function attribute(): BelongsTo
+    {
+        return $this->belongsTo(Attribute::class);
     }
 }

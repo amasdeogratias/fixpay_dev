@@ -29,6 +29,7 @@
                         <ul class="nav flex-column nav-tabs user-tabs" role="tablist">
                             <li class="nav-item"><a class="nav-link active" href="#general" data-toggle="pill">General</a></li>
                             <li class="nav-item"><a class="nav-link" href="#images" data-toggle="pill">Images</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#attributes" data-toggle="pill">Attributes</a></li>
                         </ul>
                     </div>
                 </div>
@@ -241,6 +242,9 @@
                                     @endif
                                 </div>
                             </div>
+                        </div>
+                        <div class="tab-pane" id="attributes">
+                            
                         </div>
                     </div>
                 </div>
