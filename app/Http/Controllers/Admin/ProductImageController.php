@@ -33,4 +33,16 @@ class ProductImageController extends Controller
         }
         return response()->json(['status' => 'Success']);
     }
+
+    //delete image from a product
+    public function delete($id)
+    {
+        $image = ProductImage::findOrFail($id);
+        if($image->full != '') {
+            $this->deleteOne($image->full);
+        }
+        $image->delete();
+
+        return redirect()->back();
+    }
 }
