@@ -244,7 +244,7 @@
                             </div>
                         </div>
                         <div class="tab-pane" id="attributes">
-                            
+                            <product-attributes :productid="{{ $product->id }}"></product-attributes>
                         </div>
                     </div>
                 </div>
@@ -261,6 +261,7 @@
     });
 </script>
 <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+<script type="text/javascript" src="{{ asset('backend/js/app.js') }}"></script>
 
 
 <script>
