@@ -7,7 +7,8 @@ use App\Http\Controllers\Admin\{
     AttributeController,
     AttributeValueController,
     ProductController,
-    ProductImageController
+    ProductImageController,
+    ProductAttributeController
 };
 
 /*
@@ -73,6 +74,13 @@ Route::group(['prefix'=>'admin'], function() {
 
             Route::post('images/upload', [ProductImageController::class, 'upload'])->name('admin.products.images.upload');
             Route::get('images/{id}/delete', [ProductImageController::class, 'delete'])->name('admin.products.images.delete');
+
+
+            Route::get('attributes/load', [ProductAttributeController::class, 'loadAttributes']);
+            Route::post('attributes', [ProductAttributeController::class, 'productAttributes']);
+            Route::post('attributes/values', [ProductAttributeController::class, 'loadValues']);
+            Route::post('attributes/add', [ProductAttributeController::class, 'addAttribute']);
+            Route::post('attributes/delete', [ProductAttributeController::class, 'deleteAttribute']);
 
          });
 
