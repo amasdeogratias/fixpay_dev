@@ -2,6 +2,23 @@
     <div>
         <div class="card">
             <div class="card-header">
+                <h3 class="card-title">Attributes</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="parent">Select an Attribute <span class="m-l-5 text-danger"> *</span></label>
+                            <select id=parent class="form-control custom-select mt-15" v-model="attribute" @change="selectAttribute(attribute)">
+                                <option :value="attribute" v-for="attribute in attributes"> {{ attribute.name }} </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
                 <h3 class="card-title">Product Attributes</h3>
             </div>
             <div class="card-body">
@@ -43,6 +60,8 @@ export default {
     data() {
         return {
             productAttributes: [],
+            attributes: [],
+            attribute: {},
         }
     },
 
@@ -57,6 +76,15 @@ export default {
             }).then(function(response){
                 _this.productAttributes = response.data;
             }).catch((error) => {
+                console.log(error);
+            });
+        },
+
+        loadAttributes() {
+            let _this = this;
+            axios.get('/admin/products/attributes/load').then(function(response){
+                _this.attributes = response.data;
+            }).catch(function (error) {
                 console.log(error);
             });
         },
