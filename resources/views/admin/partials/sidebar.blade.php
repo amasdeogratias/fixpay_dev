@@ -9,98 +9,59 @@
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="{{ asset('backend/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <img src="{{ asset('backend/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+            </div>
+            <div class="info">
+                <a href="#" class="d-block">Admin</a>
+            </div>
         </div>
-        <div class="info">
-          <a href="#" class="d-block">Admin</a>
-        </div>
-      </div>
 
       <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item">
-            <a href="{{route('admin.dashboard')}}" class="nav-link {{Route::currentRouteName()=='admin.dashboard' ? 'active' : ''}}">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-                <p>Dashboard</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{route('admin.categories.index')}}" class="nav-link {{Route::currentRouteName()=='admin.categories.index' ? 'active' : ''}}">
-              <i class="fa fa-tags nav-icon"></i>
-                <p>Categories</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{route('admin.brands.index')}}" class="nav-link {{Route::currentRouteName()=='admin.brands.index' ? 'active' : ''}}">
-              <i class="fa fa-briefcase nav-icon"></i>
-                <p>Brands</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{route('admin.attributes.index')}}" class="nav-link {{Route::currentRouteName()=='admin.attributes.index' ? 'active' : ''}}">
-              <i class="fa fa-th nav-icon"></i>
-                <p>Attributes</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{route('admin.products.index')}}" class="nav-link {{Route::currentRouteName()=='admin.products.index' ? 'active' : ''}}">
-              <i class="fa fa-th nav-icon"></i>
-                <p>Products</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {{ Route::currentRouteName() == 'admin.settings' ? 'active' : '' }}" href="{{ route('admin.settings') }}">
-                <i class="app-menu__icon fa fa-cogs nav-icon"></i>
-                <p>Settings</p>
-            </a>
-        </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-edit"></i>
-              <p>
-                Master
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Location Master
-                  </p>
-                </a>
-              </li>
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <!-- Add icons to the links using the .nav-icon class
+                    with font-awesome or any other icon font library -->
+                <li class="nav-item">
+                    <a href="{{route('admin.dashboard')}}" class="nav-link {{Route::currentRouteName()=='admin.dashboard' ? 'active' : ''}}">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('admin.categories.index')}}" class="nav-link {{Route::currentRouteName()=='admin.categories.index' ? 'active' : ''}}">
+                        <i class="fa fa-tags nav-icon"></i>
+                        <p>Categories</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('admin.brands.index')}}" class="nav-link {{Route::currentRouteName()=='admin.brands.index' ? 'active' : ''}}">
+                        <i class="fa fa-briefcase nav-icon"></i>
+                        <p>Brands</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('admin.attributes.index')}}" class="nav-link {{Route::currentRouteName()=='admin.attributes.index' ? 'active' : ''}}">
+                        <i class="fa fa-th nav-icon"></i>
+                        <p>Attributes</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('admin.products.index')}}" class="nav-link {{Route::currentRouteName()=='admin.products.index' ? 'active' : ''}}">
+                        <i class="fa fa-th nav-icon"></i>
+                        <p>Products</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ Route::currentRouteName() == 'admin.settings' ? 'active' : '' }}" href="{{ route('admin.settings') }}">
+                        <i class="app-menu__icon fa fa-cogs nav-icon"></i>
+                        <p>Settings</p>
+                    </a>
+                </li>
             </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-edit"></i>
-              <p>
-                Manage
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Security Management
-                  </p>
-                </a>
-              </li>
-
-            </ul>
-          </li>
-        </ul>
-      </nav>
+        </nav>
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
-  </aside>
+</aside>

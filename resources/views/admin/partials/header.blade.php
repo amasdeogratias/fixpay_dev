@@ -14,17 +14,21 @@
         </a>
 
 
-        <div class="dropdown-menu  dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{{ route('admin.logout') }}">
-                <i class="fa fa-sign-out"></i> Logout
-            </a>
+        <ul class="dropdown-menu  dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <li>
+                <a class="dropdown-item" href="{{ route('admin.logout') }}">
+                    <i class="fa fa-sign-out-alt" aria-hidden="true"></i> Logout
+                </a>
+            </li>
 
-            <a class="dropdown-item" href="{{ route('admin.settings') }}">
+            <li>
+              <a class="dropdown-item" href="{{ route('admin.settings') }}">
                 <i class="fa fa-cog fa-lg"></i> Settings
-            </a>
+              </a>
+            </li>
 
-        </div>
-    </li>
+        </ul>
+      </li>
     </ul>
 
     <!-- Right navbar links -->
