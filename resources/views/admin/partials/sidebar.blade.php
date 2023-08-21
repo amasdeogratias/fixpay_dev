@@ -53,6 +53,12 @@
                 <p>Products</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link {{ Route::currentRouteName() == 'admin.settings' ? 'active' : '' }}" href="{{ route('admin.settings') }}">
+                <i class="app-menu__icon fa fa-cogs nav-icon"></i>
+                <p>Settings</p>
+            </a>
+        </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>

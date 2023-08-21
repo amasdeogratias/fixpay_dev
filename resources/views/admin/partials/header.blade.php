@@ -18,6 +18,11 @@
             <a class="dropdown-item" href="{{ route('admin.logout') }}">
                 <i class="fa fa-sign-out"></i> Logout
             </a>
+
+            <a class="dropdown-item" href="{{ route('admin.settings') }}">
+                <i class="fa fa-cog fa-lg"></i> Settings
+            </a>
+
         </div>
     </li>
     </ul>

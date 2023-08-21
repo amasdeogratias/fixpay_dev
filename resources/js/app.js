@@ -1,5 +1,5 @@
 import { createApp } from 'vue';
-import VueSweetAlert from 'vue-sweetalert2';
+import VueSweetAlert2 from 'vue-sweetalert2';
 import axios from 'axios';
 
 //load lodash
@@ -34,7 +34,7 @@ if (token) {
 
 //Register Vue components
 const app = createApp({});
-app.use(VueSweetAlert);
+app.use(VueSweetAlert2);
 app.component('attribute-values', require('./components/AttributeValues.vue').default);
 app.component('product-attributes', require('./components/ProductAttributes').default);
 
