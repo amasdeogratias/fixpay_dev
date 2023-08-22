@@ -91,6 +91,13 @@ class ProductRepository extends BaseRepository implements ProductContract
         $product->delete();
         return $product;
     }
+    
+    //find product by slug
+    public function findProductBySlug($slug)
+    {
+        $product = Product::where('slug', $slug)->first();
+        return $product;
+    }
 
 
 }

@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\Site\{
-    CategoryController
+    CategoryController,
+    ProductController
 };
 
 
@@ -37,5 +38,6 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
 Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('category.show');
+Route::get('/product/{slug}',  [ProductController::class, 'show'])->name('product.show');
 
 

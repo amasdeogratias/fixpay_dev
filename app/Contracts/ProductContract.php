@@ -18,4 +18,7 @@ interface ProductContract
 
     //delete product
     public function deleteProduct($id);
+    
+    //find product by slug
+    public function findProductBySlug($slug);
 }
