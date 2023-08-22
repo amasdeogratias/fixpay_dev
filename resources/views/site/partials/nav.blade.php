@@ -24,7 +24,7 @@
                             </li> 
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('category.show', $category->slug) }}">{{ $category->name }}</a>
+                                <a class="nav-link" href="{{ route('category.show', $cat->slug) }}">{{ $cat->name }}</a>
                             </li>
                         @endif
                     @endforeach
