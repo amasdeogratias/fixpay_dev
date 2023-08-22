@@ -7,6 +7,7 @@ interface CategoryContract
 
     public function treeList(); //return view category
 
+    public function findBySlug($slug);
 
     public function createCategory(array $params);
 

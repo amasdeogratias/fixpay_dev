@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use App\Http\Controllers\Site\{
+    CategoryController
+};
 
 
 /*
@@ -32,5 +35,7 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 
     return redirect('/');
 })->middleware(['auth', 'signed'])->name('verification.verify');
+
+Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('category.show');
 
 
