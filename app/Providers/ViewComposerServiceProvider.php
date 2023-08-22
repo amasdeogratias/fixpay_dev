@@ -21,7 +21,7 @@ class ViewComposerServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        View::composer('site.pages.nav', function($view){
+        View::composer('site.partials.nav', function($view){
             $view->with('categories', Category::orderByRaw('-name ASC')->get()->nest());
         });
     }

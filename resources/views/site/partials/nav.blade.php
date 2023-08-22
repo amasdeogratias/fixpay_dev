@@ -6,36 +6,29 @@
         </button>
         <div class="collapse navbar-collapse" id="main_nav">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link pl-0" href="#"> <strong>All category</strong></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Fashion</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Supermarket</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Electronics</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Baby &amp Toys</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Fitness sport</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown07"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown07">
-                        <a class="dropdown-item" href="#">Foods and Drink</a>
-                        <a class="dropdown-item" href="#">Home interior</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Category 1</a>
-                        <a class="dropdown-item" href="#">Category 2</a>
-                        <a class="dropdown-item" href="#">Category 3</a>
-                    </div>
-                </li>
+                @foreach ($categories as $category)
+                    @foreach ($category->items as $cat)
+                        @if ($cat->items->count() > 0)
+                            <li class="nav-item dropdown">
+                                <a 
+                                    href="{{ route('category.show', $cat->slug) }}" 
+                                    class="nav-link dropdown-toggle" 
+                                    id="{{ $category->slug }}" 
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ $cat->name }}
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="{{ $cat->slug }}">
+                                    @foreach ($cat->items as $item)
+                                        <a href="{{ route('category.show', $item->slug) }}" class="dropdown-item">{{ $item->name }}</a>
+                                    @endforeach
+                                </div>
+                            </li> 
+                        @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('category.show', $category->slug) }}">{{ $category->name }}</a>
+                            </li>
+                        @endif
+                    @endforeach
+                @endforeach
             </ul>
         </div>
     </div>
