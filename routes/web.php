@@ -39,5 +39,6 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 
 Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('category.show');
 Route::get('/product/{slug}',  [ProductController::class, 'show'])->name('product.show');
+Route::post('/product/add/cart', [ProductController::class, 'addToCart'])->name('product.add.cart');
 
 

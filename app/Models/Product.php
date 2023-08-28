@@ -53,7 +53,7 @@ class Product extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function attributes(): HasMany
+    public function attributes()
     {
         return $this->hasMany(ProductAttribute::class);
     }
