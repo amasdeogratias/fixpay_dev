@@ -124,3 +124,23 @@
     </div>
 </section>
 @endsection
+@push('scripts')
+    <script>
+        $(document).ready(function () {
+            $('#addToCart').submit(function (e) {
+                if ($('.option').val() == 0) {
+                    e.preventDefault();
+                    alert('Please select an option');
+                }
+            });
+            $('.option').change(function () {
+                $('#productPrice').html("{{ $product->sale_price != '' ? $product->sale_price : $product->price }}");
+                let extraPrice = $(this).find(':selected').data('price');
+                let price = parseFloat($('#productPrice').html());
+                let finalPrice = (Number(extraPrice) + price).toFixed(2);
+                $('#finalPrice').val(finalPrice);
+                $('#productPrice').html(finalPrice);
+            });
+        });
+    </script>
+@endpush
