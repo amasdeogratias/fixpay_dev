@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\Site\{
     CategoryController,
-    ProductController
+    ProductController,
+    CartController
 };
 
 
@@ -40,5 +41,9 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('category.show');
 Route::get('/product/{slug}',  [ProductController::class, 'show'])->name('product.show');
 Route::post('/product/add/cart', [ProductController::class, 'addToCart'])->name('product.add.cart');
+
+Route::get('/cart', [CartController::class, 'getCart'])->name('checkout.cart');
+Route::get('/cart/item/{id}/remove', [CartController::class, 'removeItem'])->name('checkout.cart.remove');
+Route::get('/cart/clear', [CartController::class, 'clearCart'])->name('checkout.cart.clear');
 
 
