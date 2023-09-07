@@ -30,9 +30,25 @@ class ProductController extends Controller
 
     public function addToCart(Request $request)
     {
-        $product = $this->productRepository->findProductById($request->input('productId'));
+        $productId = $request->input('productId');
+        $product = $this->productRepository->findProductById($productId);
         $options = $request->except('_token', 'productId', 'price', 'qty');
-        Cart::add(uniqid(),
+
+        $cartItems = \Cart::getContent()->toArray();
+        if(!empty($cartItems))
+        {
+            foreach($cartItems as $item){
+                if ($item['id'] == $productId) {
+                    Cart::update($productId, array(
+                        'quantity' => $request->input('qty')
+                    ));
+
+                    return redirect()->back()->with('message', 'Quantity updated in cart.');
+                }
+            }
+        }
+
+        Cart::add($productId,
             $product->name,
             $request->input('price'),
             $request->input('qty'),
