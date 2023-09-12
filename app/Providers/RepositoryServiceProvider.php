@@ -4,10 +4,10 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Contracts\{
-    CategoryContract, BrandContract,AttributeContract, ProductContract
+    CategoryContract, BrandContract,AttributeContract, ProductContract,OrderContract
 };
 use App\Repositories\{
-    CategoryRepository,BrandRepository,AttributeRepository, ProductRepository
+    CategoryRepository,BrandRepository,AttributeRepository, ProductRepository,OrderRepository
 };
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -17,6 +17,7 @@ class RepositoryServiceProvider extends ServiceProvider
         BrandContract::class         =>     BrandRepository::class,
         AttributeContract::class     =>     AttributeRepository::class,
         ProductContract::class       =>     ProductRepository::class,
+        OrderContract::class         =>     OrderRepository::class,
     ];
     /**
      * Register services.
