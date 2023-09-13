@@ -1,5 +1,24 @@
 @extends('site.app')
 @section('title', 'Shopping Cart')
+@section('styles')
+<style>
+    .quantity {
+        display: inline-block;
+        font-weight: 700;
+        padding-right: 10px;
+    }
+    .chg-quantity {
+        width: 12px;
+        cursor: pointer;
+        display: block;
+        margin-top: 5px;
+        transition: .1s;
+    }
+    .chg-quantity:hover {
+        opacity: .6;
+    }
+</style>
+@endsection
 @section('content')
 
 <section class="section-pagetop bg-dark">
@@ -48,7 +67,17 @@
                                         </figure>
                                     </td>
                                     <td>
-                                        <var class="price">{{ $item->quantity }}</var>
+                                        <var class="price" style="margin-top: -1px;">{{ $item->quantity }}
+                                            <div class="quantity">
+                                                <a href="{{ route('checkout.cart.increase', $item->id) }}">
+                                                    <img class="chg-quantity update-cart" src="{{asset('frontend/images/arrow-up.png')}}">
+                                                </a>
+                                                <a href="{{ route('checkout.cart.decrease', $item->id) }}">
+                                                    <img class="chg-quantity update-cart" src="{{asset('frontend/images/arrow-down.png')}}">
+                                                </a>
+                                            </div>
+                                        </var>
+
                                     </td>
                                     <td>
                                         <div class="price-wrap">
@@ -93,3 +122,4 @@
     </div>
 </section>
 @endsection
+

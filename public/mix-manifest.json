@@ -3208,6 +3208,8 @@
     "/frontend/fonts/roboto/Roboto-Regular.ttf": "/frontend/fonts/roboto/Roboto-Regular.ttf",
     "/frontend/fonts/roboto/Roboto-Thin.ttf": "/frontend/fonts/roboto/Roboto-Thin.ttf",
     "/frontend/images/apple-touch-icon.png": "/frontend/images/apple-touch-icon.png",
+    "/frontend/images/arrow-down.png": "/frontend/images/arrow-down.png",
+    "/frontend/images/arrow-up.png": "/frontend/images/arrow-up.png",
     "/frontend/images/avatars/avatar1.jpg": "/frontend/images/avatars/avatar1.jpg",
     "/frontend/images/avatars/avatar2.jpg": "/frontend/images/avatars/avatar2.jpg",
     "/frontend/images/avatars/avatar3.jpg": "/frontend/images/avatars/avatar3.jpg",
