@@ -29,4 +29,20 @@ class CartController extends Controller
 
         return redirect('/');
     }
+
+    public function increaseItemQuantity($id)
+    {
+        Cart::update($id, [
+            'quantity' => 1
+        ]);
+        return redirect()->back()->with('message', 'Item updated from cart successfully.');
+    }
+
+    public function decreaseItemQuantity($id)
+    {
+        Cart::update($id, [
+            'quantity' => -1
+        ]);
+        return redirect()->back()->with('message', 'Item updated from cart successfully.');
+    }
 }
