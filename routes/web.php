@@ -44,6 +44,8 @@ Route::get('/product/{slug}',  [ProductController::class, 'show'])->name('produc
 Route::post('/product/add/cart', [ProductController::class, 'addToCart'])->name('product.add.cart');
 
 Route::get('/cart', [CartController::class, 'getCart'])->name('checkout.cart');
+Route::get('/cart/item/{id}/increase', [CartController::class, 'increaseItemQuantity'])->name('checkout.cart.increase');
+Route::get('/cart/item/{id}/decrease', [CartController::class, 'decreaseItemQuantity'])->name('checkout.cart.decrease');
 Route::get('/cart/item/{id}/remove', [CartController::class, 'removeItem'])->name('checkout.cart.remove');
 Route::get('/cart/clear', [CartController::class, 'clearCart'])->name('checkout.cart.clear');
 
