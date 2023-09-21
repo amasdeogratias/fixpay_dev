@@ -5,14 +5,17 @@ namespace App\Http\Controllers\Site;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Contracts\OrderContract;
+use App\Services\MobilePaymentService;
 
 class CheckoutController extends Controller
 {
     protected $orderRepository;
+    protected $mobilePayment;
 
-    public function __construct(OrderContract $orderRepository)
+    public function __construct(OrderContract $orderRepository, MobilePaymentService $mobilePayment)
     {
         $this->orderRepository = $orderRepository;
+        $this->mobilePayment = $mobilePayment;
     }
 
     public function getCheckout()
@@ -22,10 +25,23 @@ class CheckoutController extends Controller
 
     public function placeOrder(Request $request)
     {
-        // Before storing the order we should implement the
-        // request validation which I leave it to you
-        $order = $this->orderRepository->storeOrderDetails($request->all());
+        $validator = $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'address' => 'required',
+            'city' => 'required',
+            'country' => 'required',
+            'post_code' => 'required',
+            'phone_number' => 'required'
+        ]);
+        dd($validator);
+        $order = $this->orderRepository->storeOrderDetails($validator);
 
-        dd($order);
+        if(!$order){
+            return redirect()->back()->with('message','Order not placed');
+        }
+
+        $this->mobilePayment->processPayment($order);
+
     }
 }
