@@ -29,25 +29,50 @@
                             <div class="form-row">
                                 <div class="col form-group">
                                     <label>First name</label>
-                                    <input type="text" class="form-control" name="first_name">
+                                    <input type="text" class="form-control @error('first_name') is-invalid @enderror" name="first_name">
+                                    @error('first_name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="col form-group">
                                     <label>Last name</label>
-                                    <input type="text" class="form-control" name="last_name">
+                                    <input type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name">
+                                    @error('last_name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label>Address</label>
-                                <input type="text" class="form-control" name="address">
+                                <input type="text" class="form-control @error('address') is-invalid @enderror" name="address">
+                                @error('address')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label>City</label>
                                     <input type="text" class="form-control" name="city">
+                                    @error('city')
+                                        <span class="invalid-feedback" role="alert">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label>Country</label>
-                                    <input type="text" class="form-control" name="country">
+                                    <input type="text" class="form-control @error('country') is-invalid @enderror" name="country">
+                                    @error('country')
+                                        <span class="invalid-feedback" role="alert">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="form-row">
@@ -57,7 +82,12 @@
                                 </div>
                                 <div class="form-group  col-md-6">
                                     <label>Phone Number</label>
-                                    <input type="text" class="form-control" name="phone_number">
+                                    <input type="text" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number">
+                                    @error('phone_number')
+                                        <span class="invalid-feedback" role="alert">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="form-group">
