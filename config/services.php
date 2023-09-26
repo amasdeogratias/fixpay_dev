@@ -31,4 +31,10 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'azampay' => [
+        'base_url' => env('AZAMPAY_BASE_URL', 'https://authenticator-sandbox.azampay.co.tz'),
+        'client_id' => env('AZAMPAY_API_KEY'),
+        'client_secret_key' => env('AZAMPAY_API_SECRET'),
+    ],
+
 ];
