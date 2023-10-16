@@ -37,4 +37,8 @@ return [
         'client_secret_key' => env('AZAMPAY_API_SECRET'),
     ],
 
+    'stripe' => [
+        'secret_key' => env('STRIPE_SECRET')
+    ],
+
 ];
