@@ -23,36 +23,35 @@ class StripePaymentService
     public function processPayment($order)
     {
         Stripe::setApiKey(config('services.stripe.secret_key'));
+        $items = array();
+
+        $lineItems = [];
+        foreach($order->items as $item){
+            $lineItems[] = [
+                'price_data' => [
+                    'currency'     => 'TZS',
+                    'product_data' => [
+                        "name" => $item->product->name,
+                    ],
+                    'unit_amount'  => 100 *($item->product->price),
+                ],
+                'quantity'   => $item->quantity,
+            ];
+        }
+        // dd($lineItems);
+
         try {
             $session = Session::create([
-                'line_items'  => [
-                    [
-                        'price_data' => [
-                            'currency'     => 'USD',
-                            'product_data' => [
-                                "name" => $order['order_number'],
-                            ],
-                            'unit_amount'  => $order['grand_total'],
-                        ],
-                        'quantity'   => $order['item_count'],
-                    ],
-
-                ],
+                'line_items'  => $lineItems,
                 'mode'        => 'payment',
-                'success_url' =>  Route::has('success') ? route('success') : '',
-                'cancel_url'  => Route::has('checkout.index') ? route('checkout.index') : '',
+                'success_url' =>  route('checkout.payment.complete', ["order_number" => $order['order_number']]),
+                'cancel_url'  =>  route('checkout.index'),
             ]);
-            // dd($session->url);
             return redirect()->away($session->url)->send();
-            // $charge = Charge:: create([
-            //     "amount" => 20,
-            //     'currency' => 'TZS',
-            //     'source' => $this->stripeSecretKey,
-            //     'description' => 'Example Charge',
-            // ]);
 
         }catch(\Excepiton $e){
             return redirect()->back()->with('message', 'Payment processing failed: ' . $e->getMessage());
         }
     }
+
 }

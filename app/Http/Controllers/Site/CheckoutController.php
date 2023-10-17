@@ -6,7 +6,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Contracts\OrderContract;
 use App\Services\StripePaymentService;
-// use App\Services\AzamPaymentService;
+use App\Models\Order;
+use Cart;
+use Stripe\Stripe;
+use Stripe\Customer;
+use Stripe\Checkout\Session;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class CheckoutController extends Controller
 {
@@ -48,8 +53,35 @@ class CheckoutController extends Controller
 
     }
 
-    public function success()
+    public function complete(Request $request)
     {
-        return "Thanks for you order You have just completed your payment. The seeler will reach out to you as soon as possible";
+        // Stripe::setApiKey(config('services.stripe.secret_key'));
+        // $sessionId = $request->get('session_id');
+        $order_number = $request->get('order_number');
+        // dd($order_number);
+
+        try {
+            
+            if (!$order_number) {
+                throw new NotFoundHttpException;
+            }
+
+            $order = Order::where('order_number', $order_number)->first();
+            if (!$order) {
+                throw new NotFoundHttpException();
+            }
+            if ($order->status === 'pending') {
+                $order->status = 'completed';
+                $order->payment_status = 1;
+                $order->payment_method = "stripe";
+                $order->save();
+            }
+
+            Cart::clear();
+            return view('site.pages.success',compact('order'));
+        } catch (\Exception $e) {
+            throw new NotFoundHttpException();
+        }
+
     }
 }
