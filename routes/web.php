@@ -6,7 +6,8 @@ use App\Http\Controllers\Site\{
     CategoryController,
     ProductController,
     CartController,
-    CheckoutController
+    CheckoutController,
+    AccountController
 };
 
 
@@ -53,6 +54,7 @@ Route::group(["middleware" => 'auth'], function(){
     Route::get('/checkout', [CheckoutController::class, 'getCheckout'])->name('checkout.index');
     Route::post('/checkout/order', [CheckoutController::class, 'placeOrder'])->name('checkout.place.order');
     Route::get('checkout/payment/complete', [CheckoutController::class, 'complete'])->name('checkout.payment.complete');
+    Route::get('/account/orders', [AccountController::class, 'getOrders'])->name('account.orders');
 
 
 });
