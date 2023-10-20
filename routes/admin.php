@@ -13,6 +13,8 @@ use App\Http\Controllers\Admin\{
     OrderController
 };
 
+use App\Models\{Product, Order, Brand};
+
 /*
 |--------------------------------------------------------------------------
 | Admin Routes
@@ -32,7 +34,11 @@ Route::group(['prefix'=>'admin'], function() {
 
     Route::group(['middleware' => ['auth:admin']], function(){
         Route::get('/', function () {
-            return view('admin.dashboard.index');
+            $products = Product::all()->count();
+            $brands = Brand::all()->count();
+            $orders = Order::all()->count();
+            $orders_completed = Order::where('status', 'Completed')->count();
+            return view('admin.dashboard.index', compact('products','brands', 'orders', 'orders_completed'));
         })->name('admin.dashboard');
 
         Route::get('/settings', [SettingController::class, 'index'])->name('admin.settings');
