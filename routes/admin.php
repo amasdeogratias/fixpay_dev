@@ -9,7 +9,8 @@ use App\Http\Controllers\Admin\{
     AttributeValueController,
     ProductController,
     ProductImageController,
-    ProductAttributeController
+    ProductAttributeController,
+    OrderController
 };
 
 /*
@@ -86,6 +87,11 @@ Route::group(['prefix'=>'admin'], function() {
             Route::post('attributes/add', [ProductAttributeController::class, 'addAttribute']);
             Route::post('attributes/delete', [ProductAttributeController::class, 'deleteAttribute']);
 
+         });
+
+         Route::group(['prefix' => 'orders'], function () {
+            Route::get('/', [OrderController::class, 'index'])->name('admin.orders.index');
+            Route::get('/{order}/show', [OrderController::class, 'show'])->name('admin.orders.show');
          });
 
     });

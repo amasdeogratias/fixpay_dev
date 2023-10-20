@@ -54,6 +54,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('admin.orders.index')}}" class="nav-link {{Route::currentRouteName()=='admin.orders.index' ? 'active' : ''}}">
+                        <i class="fas fa-chart-bar nav-icon"></i>
+                        <p>Orders</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link {{ Route::currentRouteName() == 'admin.settings' ? 'active' : '' }}" href="{{ route('admin.settings') }}">
                         <i class="app-menu__icon fa fa-cogs nav-icon"></i>
                         <p>Settings</p>
